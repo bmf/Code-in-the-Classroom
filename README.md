@@ -1,9 +1,17 @@
-# WordFamilies
 
-JavaScript Word Families flashcard page for teaching my kids.
+https://github.com/ideonexus/Code-in-the-Classroom.git
 
-[See it in action here.] (http://ryansomma.com/files/wordfamilies.html)
+## Explorable Explanations [ExplorableExplanations/README.md] ##
 
-Licensed [CC BY-NC 3.0 US](https://creativecommons.org/licenses/by-nc/3.0/us/)
+## Table of Contents ##
 
-![Image of DiceTower](readmeimages/screenshot.jpg)
+<ul>
+    <li><a href="http://htmlpreview.github.io/?">Introduction</a></li>
+    <li><a href="http://htmlpreview.github.io/?">Chapter 01</a></li>
+    <li><a href="http://htmlpreview.github.io/?">Chapter 02</a></li>
+    <li><a href="http://htmlpreview.github.io/?">Chapter 03</a></li>
+    <li><a href="http://htmlpreview.github.io/?">Chapter 04</a></li>
+    <li><a href="http://htmlpreview.github.io/?">Chapter 05</a></li>
+    <li><a href="http://htmlpreview.github.io/?">Chapter 06</a></li>
+</ul>
+

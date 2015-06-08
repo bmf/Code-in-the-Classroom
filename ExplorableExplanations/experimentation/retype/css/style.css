@@ -1,0 +1,29 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+
+body{
+	font-size: 72pt;
+	text-align: center;
+	padding: 10px 0px 0px 10px;
+	font-family: lucida grande;
+}
+
+#cont1{
+	height: 500px;
+	border: 0px solid;
+	margin: 0px auto;
+}
+
+#time{
+	font-size: 30pt;
+}
+
+#originalText{
+	display: inline;
+}
+
+.staticLetter{
+	position: absolute;
+}
