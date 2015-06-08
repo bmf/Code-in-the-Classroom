@@ -1,7 +1,7 @@
 
 https://github.com/ideonexus/Code-in-the-Classroom.git
 
-## Explorable Explanations [ExplorableExplanations/README.md] ##
+Click here for Explorable Explanations [ExplorableExplanations/README.md]
 
 ## Table of Contents ##
 
