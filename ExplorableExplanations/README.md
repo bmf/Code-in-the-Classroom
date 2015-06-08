@@ -20,7 +20,7 @@ Numberline Navigator page for teaching addition, subtraction, multiplication, an
 
 Licensed [CC BY-NC 3.0 US](https://creativecommons.org/licenses/by-nc/3.0/us/)
 
-![Image of WordFamilies](readmeimages/numberline.png)
+![Image of WordFamilies](images/numberline.png)
 
 ## Number Mandela ##
 
@@ -30,7 +30,7 @@ Generates a number mandela for exploring primes and factors.
 
 Licensed [CC BY-NC 3.0 US](https://creativecommons.org/licenses/by-nc/3.0/us/)
 
-![Image of WordFamilies](readmeimages/numbermandela.png)
+![Image of WordFamilies](images/numbermandela.png)
 
 ## Working Folder ##
 
