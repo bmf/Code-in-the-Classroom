@@ -32,6 +32,14 @@ Licensed [CC BY-NC 3.0 US](https://creativecommons.org/licenses/by-nc/3.0/us/)
 
 ![Image of WordFamilies](images/numbermandela.png)
 
+## Simplify Spelling ##
+
+This is a bookmarklet that will simplify the spelling of web pages when clicked.
+
+[See it in action here.] (http://htmlpreview.github.io/?https://github.com/ideonexus/Code-in-the-Classroom/blob/master/ExplorableExplanations/reading/simplifyspelling.html)
+
+Licensed [CC BY-NC 3.0 US](https://creativecommons.org/licenses/by-nc/3.0/us/)
+
 ## Working Folder ##
 
 The following are works in progress:
