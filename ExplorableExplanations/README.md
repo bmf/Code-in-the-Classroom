@@ -50,7 +50,9 @@ The following are works in progress:
 
 ### Noosphere ###
 
+### What's the Color ###
 
+[LeaVerou] (https://github.com/LeaVerou/whathecolor)
 
 
 
