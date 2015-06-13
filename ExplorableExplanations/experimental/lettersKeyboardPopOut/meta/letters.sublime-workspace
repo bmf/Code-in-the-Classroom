@@ -1,0 +1,236 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"which",
+				"whichLetter"
+			],
+			[
+				"marg",
+				"margin-bottom"
+			],
+			[
+				"border-co",
+				"border-color"
+			],
+			[
+				"ta",
+				"text-align"
+			],
+			[
+				"cre",
+				"createAttributeString"
+			],
+			[
+				"att",
+				"attString"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 47.0,
+		"selected_items":
+		[
+			[
+				"Package Control: inst",
+				"Package Control: Install Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"align",
+				"Preferences: Alignment Key Bindings – Default"
+			]
+		],
+		"width": 593.0
+	},
+	"console":
+	{
+		"height": 266.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/sdell/Documents/sketches/letters/meta/notes.md",
+		"/Users/sdell/Documents/workspace/letters.sublime-project",
+		"/Users/sdell/Documents/sketches/letters/meta/letters.sublime-project",
+		"/Users/simondell/Documents/make/letters/index.html",
+		"/Users/simondell/Documents/make/letters/js/main.js",
+		"/Users/simondell/Documents/make/letters/js/letters.js",
+		"/Users/simondell/Library/Application Support/Sublime Text 2/Packages/JavaScript/log.sublime-snippet",
+		"/Users/simondell/Library/Application Support/Sublime Text 2/Packages/User/log",
+		"/Users/sdell/Documents/Audi/dev-ACOUK-9154-fleet/jcr_root/apps/audi/components/tracking-and-analytics/omniture/page-specific.jsp",
+		"/Users/sdell/Documents/Audi/dev-ACOUK-9154-fleet/jcr_root/etc/designs/audi/build/cms/production/css/template-Fleet.core.css",
+		"/Users/sdell/Documents/Audi/dev-ACOUK-9154-fleet/ui-templates/etc/designs/audi/js/amd/audi/views/overlayview.js",
+		"/Users/sdell/Documents/Audi/dev-ACOUK-9154-fleet/ui-templates/etc/designs/audi/js/amd/apps/fleet/views/overlays.js",
+		"/Users/sdell/Documents/Audi/dev-ACOUK-9154-fleet/ui-templates/etc/designs/audi/js/amd/apps/fleet/comparecontroller.js",
+		"/Users/sdell/Documents/Audi/dev-ACOUK-9154-fleet/jcr_root/apps/audi/components/fleet/fleet-compare-models/fleet-compare-models.jsp",
+		"/Users/sdell/Documents/Audi/sublime projects/Audi Fleet.sublime-project",
+		"/Users/sdell/Documents/singlepageauth/vodafine_rfi/index.php",
+		"/Users/sdell/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/Users/sdell/Library/Application Support/Sublime Text 2/Packages/Alignment/Default (OSX).sublime-keymap",
+		"/Users/sdell/Library/Application Support/Sublime Text 2/Packages/User/JavaScript.sublime-settings",
+		"/Users/sdell/Documents/sketches/require/scripts/helper/:: debug.js",
+		"/Users/sdell/Documents/singlepageauth/index.php",
+		"/Users/sdell/Documents/singlepageauth/login.css",
+		"/Users/sdell/Documents/singlepageauth/word.php",
+		"/etc/hosts",
+		"/etc/apache2/httpd.conf",
+		"/Users/sdell/Library/Application Support/Sublime Text 2/Packages/JavaScript/log.sublime-snippet",
+		"/Users/sdell/Documents/sketches/require/write.js",
+		"/Users/sdell/Documents/sketches/require/scripts/helper/write.js",
+		"/Users/sdell/Documents/sketches/require/use.js"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"expandLetter",
+			"expand",
+			"flyover",
+			"each",
+			".each",
+			"templateB.js",
+			"templateb.core.js",
+			"s.linkInternalFilters",
+			"strOmnitureFullHierarchy",
+			".hier1",
+			"Fleet/Company car driver",
+			"s.hier1",
+			"s.hier1=\"Fleet/Company car driver\"",
+			"OverlayView",
+			".compareAdd",
+			"car-comparator",
+			"CompareController",
+			"countLimit",
+			"			var type = type? type: 'div',\n				attrs = attrs? attrs: {},\n				content = content ? content: '',\n				html = '<' + type + ' ';\n\n			html += (attrs === {} )? '': renderAttributeString( attrs );\n			html += (content === '' )? '/>': '>' + content + '</' + type + '>';\n			\n",
+			"document.createElement",
+			"write",
+			"Write",
+			"www",
+			"white",
+			"hidden",
+			"type='text'",
+			"name=\"login\" ",
+			"vhosts",
+			"renderElement",
+			"create"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"Write",
+			"FFFEF5",
+			"password",
+			"hidden",
+			"type='hidden'",
+			"type='text'",
+			"render",
+			"create"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": false,
+	"side_bar_visible": true,
+	"side_bar_width": 155.0,
+	"status_bar_visible": true
+}
