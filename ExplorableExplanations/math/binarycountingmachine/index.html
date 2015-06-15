@@ -1,6 +1,50 @@
 <html>
   <head>
     <title>Binary Counting Turing Machine</title>
+<style type='text/css'>
+    
+    body {
+        background-color: midnightblue;
+        font-family: arial;
+        color: white;
+        font-size: 22px;
+    }
+
+    td {
+        font-size: 34px;
+    }
+
+    th {
+      background-color: lightblue;
+      font-weight: bold;
+      font-size: 1.5em;
+      color: black;
+    }
+
+    h1, h2 {
+        text-align: center;
+    }
+
+    input {
+        font-size:36px;
+        font-weight: bold;
+        -webkit-appearance: none;
+        margin: 5px;
+    }
+
+    div {
+      text-align: center;
+    }
+
+    .NoLink
+    {
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 60pt;
+        font-family: "Arial"
+    }
+</style>
+
 <script type="text/javascript">
 <!--
 
@@ -12,8 +56,8 @@ function getObject(el)
 
 function highlight(current, last)
 {
-   getObject(last).style.background    = '#FFFFFF';
-   getObject(current).style.background = 'gold';
+   getObject(last).style.background    = 'midnightblue';
+   getObject(current).style.background = 'darkgoldenrod';
 }
 
 var iTotal;
@@ -92,9 +136,9 @@ function binaryTuringMachine()
 //alert("here1");
 
     getObject(currentPosition).innerHTML = '0';
-    getObject("P" + currentPosition).style.background = '#FFFFFF';
+    getObject("P" + currentPosition).style.background = 'midnightblue';
     currentPosition = parseInt(currentPosition) + 1;
-    getObject("P" + currentPosition).style.background = 'gold';
+    getObject("P" + currentPosition).style.background = 'darkgoldenrod';
   }
   else if(currentState == 'write' && scannedSymbol == '0')
   {
@@ -102,25 +146,25 @@ function binaryTuringMachine()
     getObject(currentPosition).innerHTML = '1';
     currentState = 'return';
     total();
-    getObject("P" + currentPosition).style.background = '#FFFFFF';
+    getObject("P" + currentPosition).style.background = 'midnightblue';
     currentPosition = parseInt(currentPosition) - 1;
-    getObject("P" + currentPosition).style.background = 'gold';
+    getObject("P" + currentPosition).style.background = 'darkgoldenrod';
   }
   else if(currentState == 'return' && (scannedSymbol == '0' || scannedSymbol == '1'))
   {
 //alert("here3");
-    getObject("P" + currentPosition).style.background = '#FFFFFF';
+    getObject("P" + currentPosition).style.background = 'midnightblue';
     currentPosition = parseInt(currentPosition) - 1;
-    getObject("P" + currentPosition).style.background = 'gold';
+    getObject("P" + currentPosition).style.background = 'darkgoldenrod';
   }
   else if(currentState == "return" && scannedSymbol == "*")
   {
 //alert("here4");
     // output and restart
     currentState = "write";
-    getObject("P" + currentPosition).style.background = '#FFFFFF';
+    getObject("P" + currentPosition).style.background = 'midnightblue';
     currentPosition = parseInt(currentPosition) + 1;
-    getObject("P" + currentPosition).style.background = 'gold';
+    getObject("P" + currentPosition).style.background = 'darkgoldenrod';
   }
 
 //alert("here5");
@@ -173,20 +217,20 @@ function binaryTuringMachine()
     getObject("6").innerHTML = "0";
     getObject("7").innerHTML = "0";
     getObject("8").innerHTML = "0";
-    getObject("P1").style.background = '#FFFFFF';
-    getObject("P2").style.background = '#FFFFFF';
-    getObject("P3").style.background = '#FFFFFF';
-    getObject("P4").style.background = '#FFFFFF';
-    getObject("P5").style.background = '#FFFFFF';
-    getObject("P6").style.background = '#FFFFFF';
-    getObject("P7").style.background = '#FFFFFF';
-    getObject("P8").style.background = '#FFFFFF';
-    getObject("P0").style.background = 'gold';
-    getObject("T1").style.background = '#FFFFFF';
-    getObject("T2").style.background = '#FFFFFF';
-    getObject("T3").style.background = '#FFFFFF';
-    getObject("T4").style.background = '#FFFFFF';
-    getObject("T5").style.background = 'gold';
+    getObject("P1").style.background = 'midnightblue';
+    getObject("P2").style.background = 'midnightblue';
+    getObject("P3").style.background = 'midnightblue';
+    getObject("P4").style.background = 'midnightblue';
+    getObject("P5").style.background = 'midnightblue';
+    getObject("P6").style.background = 'midnightblue';
+    getObject("P7").style.background = 'midnightblue';
+    getObject("P8").style.background = 'midnightblue';
+    getObject("P0").style.background = 'darkgoldenrod';
+    getObject("T1").style.background = 'midnightblue';
+    getObject("T2").style.background = 'midnightblue';
+    getObject("T3").style.background = 'midnightblue';
+    getObject("T4").style.background = 'midnightblue';
+    getObject("T5").style.background = 'darkgoldenrod';
     getObject("total").innerHTML = "0";
     bReset = "";
   }
@@ -231,20 +275,20 @@ function reset()
     getObject("6").innerHTML = "0";
     getObject("7").innerHTML = "0";
     getObject("8").innerHTML = "0";
-    getObject("P1").style.background = '#FFFFFF';
-    getObject("P2").style.background = '#FFFFFF';
-    getObject("P3").style.background = '#FFFFFF';
-    getObject("P4").style.background = '#FFFFFF';
-    getObject("P5").style.background = '#FFFFFF';
-    getObject("P6").style.background = '#FFFFFF';
-    getObject("P7").style.background = '#FFFFFF';
-    getObject("P8").style.background = '#FFFFFF';
-    getObject("P0").style.background = 'gold';
-    getObject("T1").style.background = '#FFFFFF';
-    getObject("T2").style.background = '#FFFFFF';
-    getObject("T3").style.background = '#FFFFFF';
-    getObject("T4").style.background = '#FFFFFF';
-    getObject("T5").style.background = 'gold';
+    getObject("P1").style.background = 'midnightblue';
+    getObject("P2").style.background = 'midnightblue';
+    getObject("P3").style.background = 'midnightblue';
+    getObject("P4").style.background = 'midnightblue';
+    getObject("P5").style.background = 'midnightblue';
+    getObject("P6").style.background = 'midnightblue';
+    getObject("P7").style.background = 'midnightblue';
+    getObject("P8").style.background = 'midnightblue';
+    getObject("P0").style.background = 'darkgoldenrod';
+    getObject("T1").style.background = 'midnightblue';
+    getObject("T2").style.background = 'midnightblue';
+    getObject("T3").style.background = 'midnightblue';
+    getObject("T4").style.background = 'midnightblue';
+    getObject("T5").style.background = 'darkgoldenrod';
     getObject("total").innerHTML = "0";
     itimeout = 1000;
     bReset = "";
@@ -265,17 +309,8 @@ function slowdown()
 
 //-->
 </script>
-<style type="text/css">
-.NoLink
-{
-    TEXT-DECORATION: none;
-    FONT-WEIGHT: bold;
-    FONT-SIZE: 30pt;
-    FONT-FAMILY: "Arial"
-}
-</style>
-  </head>
-  <body style="background-color: #FFFFFF;">
+</head>
+  <body>
     <table border="1" cellpadding="3" align="center">
       <tr>
         <td colspan="9" align="center"><a NAME="total" id="total" class="NoLink">0</a></td>
@@ -289,43 +324,61 @@ function slowdown()
         <td id="P3"><a NAME="3" id="3" CLASS="NoLink">0</a></td>
         <td id="P2"><a NAME="2" id="2" CLASS="NoLink">0</a></td>
         <td id="P1"><a NAME="1" id="1" CLASS="NoLink">0</a></td>
-        <td id="P0" bgcolor="gold"><a NAME="0" id="0" CLASS="NoLink">*</a></td>
+        <td id="P0" bgcolor="darkgoldenrod"><a NAME="0" id="0" CLASS="NoLink">*</a></td>
       </tr>
     </table>
     
     <table border="1" cellpadding="3" align="center">
-      <tr bgcolor="#0000FF">
-        <th align="center"><font color="#FFFFFF">Current<br>State</font></th>
-        <th align="center"><font color="#FFFFFF">Scanned<br>Symbol</font></th>
-        <th align="center"><font color="#FFFFFF">Print<br>Symbol</font></th>
-        <th align="center"><font color="#FFFFFF">Move<br>Tape</font></th>
-        <th align="center"><font color="#FFFFFF">Final<br>State</font></th>
+      <tr>
+        <th>Current<br>State</th>
+        <th>Scanned<br>Symbol</th>
+        <th>Print<br>Symbol</th>
+        <th>Move<br>Tape</th>
+        <th>Final<br>State</th>
       </tr>
       <tr id="T1">
-        <td align="center">write</td><td align="center">1</td><td align="center">0</td><td align="center">left</td><td align="center">write</td>
+        <td>write</td>
+        <td>1</td>
+        <td>0</td>
+        <td>left</td>
+        <td>write</td>
       </tr>
       <tr id="T2">
-        <td align="center">write</td><td align="center">0</td><td align="center">1</td><td align="center">right</td><td align="center">return</td>
+        <td>write</td>
+        <td>0</td>
+        <td>1</td>
+        <td>right</td>
+        <td>return</td>
       </tr>
       <tr id="T3">
-        <td align="center">return</td><td align="center">1</td><td align="center">- -</td><td align="center">right</td><td align="center">return</td>
+        <td>return</td>
+        <td>1</td>
+        <td>- -</td>
+        <td>right</td>
+        <td>return</td>
       </tr>
       <tr id="T4">
-        <td align="center">return</td><td align="center">0</td><td align="center">- -</td><td align="center">right</td><td align="center">return</td>
+        <td>return</td>
+        <td>0</td>
+        <td>- -</td>
+        <td>right</td>
+        <td>return</td>
       </tr>
-      <tr id="T5"  bgcolor="gold"><!-- OUTPUT -->
-        <td align="center">return</td><td align="center">*</td><td align="center">- -</td><td align="center">left</td><td align="center">write</td>
+      <tr id="T5"  bgcolor="darkgoldenrod"><!-- OUTPUT -->
+        <td>return</td>
+        <td>*</td>
+        <td>- -</td>
+        <td>left</td>
+        <td>write</td>
       </tr>
     </table>
-    <table align="center">
-      <tr>
-        <td><input type="button" name="startstop" id="startstop" value="Start" onClick="startStop();"></td>
-        <td><input type="button" name="step" id="step" value="Step" onClick="binaryTuringMachine();"></td>
-        <td><input type="button" name="reset" id="reset" value="Reset" onClick="reset();"</td>
-        <td><input type="button" name="+" id="+" value="+" onClick="speedup();"</td>
-        <td><input type="button" name="-" id="-" value="-" onClick="slowdown();"</td>
-      </tr>
-    </table>
+    <div>
+      <input type="button" name="startstop" id="startstop" value="Start" onClick="startStop();" />
+      <input type="button" name="step" id="step" value="Step" onClick="binaryTuringMachine();" />
+      <input type="button" name="reset" id="reset" value="Reset" onClick="reset();" />
+      <input type="button" name="+" id="+" value="+" onClick="speedup();" />
+      <input type="button" name="-" id="-" value="-" onClick="slowdown();" />
+    </div>
   </body>
 </html>
 

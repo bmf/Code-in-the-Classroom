@@ -1,4 +1,34 @@
-<html><head><title>i ching</title>
+<html>
+    <head>
+        <title>i ching</title>
+<style type='text/css'>
+    
+    body {
+        background-color: indigo;
+        font-family: arial;
+        color: white;
+        font-size: 22px;
+    }
+
+    td {
+        font-size: 26px;
+    }
+
+    h1, h2 {
+        text-align: center;
+    }
+
+    select {
+        font-size:24px;
+        font-weight: bold;
+        -webkit-appearance: none;
+        width: 800px !important;
+        margin: 5px;
+    }
+
+</style>
+
+
 <script type="text/javascript">
 
 var binaryKeys = ["111111","000000","010001","100010","010111","111010","000010","010000"
@@ -214,56 +244,47 @@ function calculateIChing(){
 }
 </script>
 </head>
-<body style="color: #ffffff; background-color:#000000;" onload="populateSelectors();">
+<body onload="populateSelectors();">
 <div align="center">
 <form name="iching" id="iching">
-		<table border="1" cellpadding="3">
-			<tbody>
-			<tr><td align="center"><b><div id="logicOp">XOR</div></b></td></tr>
-			<tr>
-				<td><select id="a" onchange="calculateIChing();"></select></td>
-			</tr>
-			<tr>
-				<td><select id="b" onchange="calculateIChing();"></select></td>
-			<tr>
-				<td><select id="c"><option value=""></option></select></td>
-			</tr>
-			</tbody>
-		</table>
-		<table border="0">
-			<tr>
-				<td><input type="radio" id="logicGate" name="logicGate" value="AND" onclick="calculateIChing();" /> AND</td>
-				<td><input type="radio" id="logicGate" name="logicGate" value="XOR" onclick="calculateIChing();" checked /> XOR</td>
-				<td><input type="radio" id="logicGate" name="logicGate" value="OR" onclick="calculateIChing();" /> OR</td>
-			</tr>
-			<tr>
-				<td><input type="radio" id="logicGate" name="logicGate" value="NAND" onclick="calculateIChing();" /> NAND</td><td><input type="radio" id="logicGate" name="logicGate" value="XNOR" onclick="calculateIChing();" /> XNOR</td>
-				<td><input type="radio" id="logicGate" name="logicGate" value="NOR" onclick="calculateIChing();" /> NOR</td></tr><tr></td>
-			</tr>
-		</tbody>
+    <h1 id="logicOp">XOR</h1>
+	<select id="a" onchange="calculateIChing();"></select>
+	<select id="b" onchange="calculateIChing();"></select>
+	<select id="c">
+        <option value=""></option>
+    </select>
+	<table border="0">
+    <tbody>
+		<tr>
+			<td>
+                <input type="radio" id="logicGate" name="logicGate" value="AND" onclick="calculateIChing();" /> AND
+            </td>
+			<td>
+                <input type="radio" id="logicGate" name="logicGate" value="XOR" onclick="calculateIChing();" checked /> XOR
+            </td>
+			<td>
+                <input type="radio" id="logicGate" name="logicGate" value="OR" onclick="calculateIChing();" /> OR
+            </td>
+		</tr>
+		<tr>
+			<td>
+                <input type="radio" id="logicGate" name="logicGate" value="NAND" onclick="calculateIChing();" /> NAND
+            </td>
+            <td>
+                <input type="radio" id="logicGate" name="logicGate" value="XNOR" onclick="calculateIChing();" /> XNOR
+            </td>
+			<td>
+                <input type="radio" id="logicGate" name="logicGate" value="NOR" onclick="calculateIChing();" /> NOR
+            </td>
+		</tr>
+	</tbody>
 	</table>
-	<table border="1" cellpadding="3" width="425">
-		<tbody>
-		<tr>
-			<td id="aTitle" align="center"><b></b></td>
-		</tr>
-		<tr>
-			<td valign="top" id="aSummary"></td>
-		</tr>
-		<tr>
-			<td id="bTitle" align="center"><b></b></td>
-		</tr>
-		<tr>
-			<td valign="top" id="bSummary"></td>
-		</tr>
-		<tr>
-			<td id="cTitle" align="center"><b></b></td>
-		</tr>
-		<tr>
-			<td valign="top" id="cSummary"></td>
-		</tr>
-		</tbody>
-	</table>
+	<h2 id="aTitle"></h2>
+	<div id="aSummary"></div>
+	<h2 id="bTitle"></h2>
+	<div id="bSummary"></div>
+	<h2 id="cTitle"></h2>
+	<div id="cSummary"></div>
 </form>
 </div>
 </body>
