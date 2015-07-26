@@ -14,8 +14,9 @@
         color: white;
     }
 
-    h1, h2 {
+    h1, h2, h3, h4 {
         text-align: center;
+        line-height: .40em;
     }
 
     #stage { 
@@ -53,7 +54,7 @@
         margin: auto;
         text-align: center;
         background-color: lightgreen;
-        width: 160px;
+        width: 250px;
         height: 25px;
         line-height: 25px;
     }
@@ -158,6 +159,8 @@ families["unk"] = [ "bunk", "chunk", "drunk", "dunk", "flunk", "funk", "hunk", "
 var currentFamily = "ack";
 var currentIndex = 0;
 var uppercase = true;
+var soundOn = true;
+var baseWord;
 
 function getRandomColor() {
     var letters = '0123456789ABCDEF'.split('');
@@ -172,21 +175,39 @@ function toggleCase() {
     if (uppercase) {
         uppercase = false;
         $("#caseToggle").html("Toggle UpperCase");
-        $( "#wordmod" ).html($( "#wordmod" ).html().toLowerCase())
+        $( "#wordmod" ).html($( "#wordmod" ).html().toLowerCase());
     } else {
         uppercase = true;
         $("#caseToggle").html("Toggle LowerCase");
-        $( "#wordmod" ).html($( "#wordmod" ).html().toUpperCase())
+        $( "#wordmod" ).html($( "#wordmod" ).html().toUpperCase());
+    }
+    if (soundOn) speakWord(baseWord);
+}
+
+function toggleSound() {
+    if (soundOn) {
+        soundOn = false;
+        $("#soundToggle").html("Sound On");
+    } else {
+        soundOn = true;
+        $("#soundToggle").html("Sound Off");
     }
 }
 
+
 function setWord() {
-    var baseWord = families[currentFamily][currentIndex];
+    baseWord = families[currentFamily][currentIndex];
+    var modWord = baseWord;
     if (uppercase) {
-        $( "#wordmod" ).html(baseWord.toUpperCase());
+        $("#wordmod").html(modWord.replace(currentFamily,'<u>'+currentFamily+'</u>').toUpperCase());
     } else {
-        $( "#wordmod" ).html(baseWord.toLowerCase());
+        $("#wordmod").html(modWord.replace(currentFamily,'<u>'+currentFamily+'</u>').toLowerCase());
     }
+    if (soundOn) speakWord(baseWord);
+}
+
+function speakWord(word) {
+    window.speechSynthesis.speak(new SpeechSynthesisUtterance(word));
 }
 
 function switchFamily(index) {
@@ -217,8 +238,9 @@ $(window).load(function(){
     <div id="stage">
         <a href="javascript:void(0);" id="wordmod"></span>
     </div>
-    <div id="toggle"><a href="javascript:void(0);" onclick="toggleCase();" id="caseToggle">Toggle LowerCase</a></div>
+    <div id="toggle"><a href="javascript:void(0);" onclick="toggleCase();" id="caseToggle">Toggle LowerCase</a> | <a href="javascript:void(0);" onclick="toggleSound();" id="soundToggle">Sound Off</a></div>
     <h2>Word Families: Click Below and Above to Cycle Through Variants</h2>
+    <h4>Thanks to <a href="http://www.enchantedlearning.com/rhymes/wordfamilies/">Enchanted Learning</a> for the list of Word Families.</h4>
     <div id="wordFamilies"></div>
 </body>
 </html>
