@@ -24,16 +24,21 @@
 		width: 100%;
 	}
 	
-	#toggles {
+	#toggles, #footer {
 	    width: 100%;
 	    text-align: center;
+        color: #ffffff;
+        font-family: verdana, sans-serif;
 	}
+
+    #toggles a, #footer a {
+        text-decoration: none;
+        color: #9999ff;
+    }
 
 	#footer {
 	    position:fixed;
 	    bottom:0;
-	    width: 100%;
-	    text-align: center;
 	}
 
 	#alpha {
@@ -94,13 +99,33 @@ function speakWord(word) {
   6.  Return the value
 */
 function getHex() {
-	var hexvals = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F"];
+	var hexvals = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F"];
 	currHexVal = "#";
 	for(i = 0; i < 6; i++) {
 		idx = Math.floor(Math.random() * 14); //picks a num 0 to 14
 		currHexVal += hexvals[idx];
 	}
 	return currHexVal;
+}
+
+function getBrightHex() {
+    var hexvals = ["8", "9", "A", "B", "C", "D", "E", "F"];
+    currHexVal = "#";
+    for(i = 0; i < 6; i++) {
+        idx = Math.floor(Math.random() * 7); //picks a num 0 to 14
+        currHexVal += hexvals[idx];
+    }
+    return currHexVal;
+}
+
+function getDarkHex() {
+    var hexvals = ["0", "1", "2", "3", "4", "5", "6", "7"];
+    currHexVal = "#";
+    for(i = 0; i < 6; i++) {
+        idx = Math.floor(Math.random() * 7); //picks a num 0 to 14
+        currHexVal += hexvals[idx];
+    }
+    return currHexVal;
 }
 
 /*
@@ -113,19 +138,19 @@ function getHex() {
   7.  Set the background color of the entire document to the random hex value
   
 */
+var alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+
 function writeLetter() {
 //The list of all letters
-	var alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-
 	pickLetter = Math.floor(Math.random() * 25); //picks a num 0 to 25
 	document.getElementById("alpha").innerHTML = alphabet[pickLetter];
 
 	speakWord(alphabet[pickLetter]);
 
-	alphacolor = getHex();
+	alphacolor = getBrightHex();
 	document.getElementById("alpha").style.color = alphacolor;
 
-	backgroundcolor = getHex();
+	backgroundcolor = getDarkHex();
 	document.bgColor = backgroundcolor;
 }
 
@@ -139,7 +164,7 @@ setup = function() {  //function setup() { will also work!
   document.getElementById("main").addEventListener("click", function() { writeLetter(); });
   
   //now actually call writeLetter() so we'll get a random letter to start
-	writeLetter();
+  writeLetter();
 }
 
 window.onload = setup;
@@ -148,7 +173,7 @@ window.onload = setup;
 
 <body bgcolor="#A2DAC1">
 
-<div id="main" onclick="writeLetter();">
+<div id="main">
 	<div id="alpha" style="color: rgb(137, 135, 200);">A</div>
 	<div id="toggles"><a href="javascript:void(0);" onclick="toggleFont();" id="fontToggle">Sans-Serif</a> | <a href="javascript:void(0);" onclick="toggleSound();" id="soundToggle">Sound Off</a></div>
 	<div id="footer">Built on <a href="http://menscher.com/teaching/woaa/examples/jsexampleapp3.html">this demo</a> by Corey Menscher.</div>
