@@ -47,7 +47,7 @@
 		position: absolute;
 		top: 20%;
 		width: 100%;
-		font-size: 25em;
+		font-size: 20em;
 		text-align: center;
 		text-shadow: 3px 3px 2px #333333;
 		margin: auto;
@@ -163,6 +163,8 @@ setup = function() {  //function setup() { will also work!
   //first start an event listener for clicking on the "main" div to call writeLetter()
   document.getElementById("main").addEventListener("click", function() { writeLetter(); });
   
+  document.body.onkeydown = function(e){ writeLetter(); };
+
   //now actually call writeLetter() so we'll get a random letter to start
   writeLetter();
 }

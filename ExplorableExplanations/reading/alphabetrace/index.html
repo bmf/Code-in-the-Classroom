@@ -30,8 +30,14 @@ body{
 	display: inline;
 }
 
-.staticLetter{
+.staticLetter, .currentLetter{
 	position: absolute;
+}
+
+.currentLetter{
+    font-weight: bold;
+    color: #ffffff;
+    font-size: 1.25em;
 }
 
 #toggles, #footer {
@@ -124,10 +130,19 @@ function getDarkHex() {
 
 var timeRunning = 0;
 
+var bounceCharFunction;
+var bounceChar = function() {
+    $('.currentLetter').css({'left':($('#originalText').position().left - 10) + 'px', 'top':($('#originalText').position().top - 20) + 'px'}).animate({top: '+=' + 5}, 200, 'easeOutBounce').animate({top: '-=' + 5}, 200, 'easeOutBounce');
+    setTimeout(bounceChar, 400 );
+}
+
 $(function(){
 	
 	var characterArray = $('#originalText').text().split("");
-	
+    $('body').append('<span class="currentLetter">' + characterArray[0] + '</span>');
+    //bounceCharFunction = bounceChar();
+    bounceChar();
+
 	$(window).keydown(function(e){
 		
 		if(String.fromCharCode(e.keyCode).toUpperCase() == characterArray[0]){		
@@ -148,12 +163,25 @@ $(function(){
 			}
 				
 			$('body').append('<span class="staticLetter">' + characterArray[0] + '</span>');
-			$('span:last').css({'left':$('#originalText').position().left + 'px', 'top':$('#originalText').position().top + 'px'}).animate({top: '+=' + 300}, 500, 'easeOutBack').fadeOut('slow');
-			characterArray.shift();
-			$('#originalText').text(characterArray.join().replace(/,/g, ''));
 			
-			if(characterArray.length == 0)
+            $('.staticLetter').css({'left':$('#originalText').position().left + 'px', 'top':$('#originalText').position().top + 'px'}).animate({top: '+=' + 300}, 500, 'easeOutBounce').fadeOut('slow');
+			
+            $('.currentLetter').remove();
+
+            characterArray.shift();
+
+			$('#originalText').text(characterArray.join().replace(/,/g, ''));
+
+            //$('#originalText').text().charAt(0).animate({ top: "+=100px" }, 400, "easeOutBounce");
+            //$('#originalText').animate({ top: "+=100px" }, 400, "easeOutBounce");
+			
+			if(characterArray.length == 0) {
 				alert('You typed the alphabet in ' + timeRunning.toFixed(3) + ' seconds!!\n\nREFRESH TO PLAY AGAIN');
+            } else {
+                $('body').append('<span class="currentLetter">' + characterArray[0] + '</span>');
+                //bounceCharFunction = bounceChar();
+                bounceChar();
+            }
 		}
 	});
 });
