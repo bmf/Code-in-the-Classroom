@@ -1,169 +1,155 @@
-
-<!DOCTYPE html>
 <html>
-<head>
-  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-  <title>Word Families</title>
-  
-  <script type='text/javascript' src='http://code.jquery.com/jquery-2.1.3.js'></script>
-  
-<style type='text/css'>
-    body {
-        background-color: darkgreen;
-        font-family: arial;
-        color: white;
-    }
-
-    h1, h2, h3, h4 {
-        text-align: center;
-        line-height: .40em;
-    }
-
-    #stage { 
-        
-        width: 100%;
-        height: 250px;
-        background-color: lightgreen;
-
-        /*position: absolute;
-        top:0;
-        bottom: 0;
-        left: 0;
-        right: 0;*/
-
-        margin: auto;
-       
-        font-size: 10em;
-        color: darkblue;
-        text-align: center;
-        line-height: 250px;
-    }
-
-    #toggle {
-        margin: auto;
-        text-align: center;
-        background-color: lightgreen;
-        width: 250px;
-        height: 25px;
-        line-height: 25px;
-    }
-
-    #toggle a {
-        text-decoration: none;
-        font-weight: bold;
-    }
-
-    #wordFamilies {
-        font-size: 2em;
-        height: 100px;
-        line-height: 100px;
-        text-align: center;
-    }
-
-    #wordFamilies a {
-        padding: 15px;
-        text-decoration: none;
-        margin: 5px;
-        color: white;
-    }
+  <head>
+  <title>Days of the Week</title>
+  <!-- Built on Ken Wheeler's Slick.js Carousel
+  http://kenwheeler.github.io/slick/ -->
+  <link rel="stylesheet" type="text/css" href="slick/slick.css"/>
+  <link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
+<style>
+body {
+  background-color: midnightblue;
+  font-size: 1em;
+}
+.weekdays {
+    margin: auto;
+    width: 75%;
+    height: 100%;
+    padding: 0px;
+    background-color: black;
+    text-align: center;
+    color: white;
+    font-family: arial, sans-serif;
+    font-size: 3em;
+    text-shadow: 6px 6px 6px darkblue;
+}
+.weekday {
+    background-repeat: no-repeat;
+    background-position: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+.planet {
+  text-align: center;
+  position: absolute;
+  bottom: 0px;
+  width: 11%;
+}
+@media (max-width: 700px) {
+  .weekdays {
+    width: 95%;
+  }
+  .sunday {
+    background-image: url("img/sunday.jpg");
+  }
+  .monday {
+    background-image: url("img/monday.jpg");
+  }
+  .tuesday {
+    background-image: url("img/tuesday.jpg");
+  }
+  .wednesday {
+    background-image: url("img/wednesday.jpg");
+  }
+  .thursday {
+    background-image: url("img/thursday.jpg");
+  }
+  .friday {
+    background-image: url("img/friday.jpg");
+  }
+  .saturday {
+    background-image: url("img/saturday.jpg");
+  }
+}
+@media (min-width: 701px) {
+  .sunday {
+    background-image: url("img/sunday_hr.jpg");
+  }
+  .monday {
+    background-image: url("img/monday_hr.jpg");
+  }
+  .tuesday {
+    background-image: url("img/tuesday_hr.jpg");
+  }
+  .wednesday {
+    background-image: url("img/wednesday_hr.jpg");
+  }
+  .thursday {
+    background-image: url("img/thursday_hr.jpg");
+  }
+  .friday {
+    background-image: url("img/friday_hr.jpg");
+  }
+  .saturday {
+    background-image: url("img/saturday_hr.jpg");
+  }
+}
 </style>
-  
-<script type='text/javascript'>
-var days = {
-    'sunday'     : ['sun.jpg', 'yellow']
-    ,'monday'    : ['moon.jpg', 'violet']
-    ,'tuesday'   : ['mars.jpg', 'red']
-    ,'wednesday' : ['mercury.jpg', 'orange']
-    ,'thursday'  : ['jupiter.jpg', 'lightblue']
-    ,'friday'    : ['venus.jpg', 'green']
-    ,'saturday'  : ['saturn.jpg', 'black']
-};
+  </head>
+  <body>
 
-var currentDay = "sunday";
-var currentIndex = 0;
-var uppercase = true;
-var soundOn = true;
-var baseWord;
-
-function getRandomColor() {
-    var letters = '0123456789ABCDEF'.split('');
-    var color = '#';
-    for (var i = 0; i < 6; i++ ) {
-        color += letters[Math.floor(Math.random() * 13)];
-    }
-    return color;
-}
-
-function toggleCase() {
-    if (uppercase) {
-        uppercase = false;
-        $("#caseToggle").html("Toggle UpperCase");
-        $( "#wordmod" ).html($( "#wordmod" ).html().toLowerCase());
-    } else {
-        uppercase = true;
-        $("#caseToggle").html("Toggle LowerCase");
-        $( "#wordmod" ).html($( "#wordmod" ).html().toUpperCase());
-    }
-    if (soundOn) speakWord(baseWord);
-}
-
-function toggleSound() {
-    if (soundOn) {
-        soundOn = false;
-        $("#soundToggle").html("Sound On");
-    } else {
-        soundOn = true;
-        $("#soundToggle").html("Sound Off");
-    }
-}
-
-
-function setWord() {
-    baseWord = families[currentFamily][currentIndex];
-    var modWord = baseWord;
-    if (uppercase) {
-        $("#wordmod").html(modWord.replace(currentFamily,'<u>'+currentFamily+'</u>').toUpperCase());
-    } else {
-        $("#wordmod").html(modWord.replace(currentFamily,'<u>'+currentFamily+'</u>').toLowerCase());
-    }
-    if (soundOn) speakWord(baseWord);
-}
-
-function speakWord(word) {
-    window.speechSynthesis.speak(new SpeechSynthesisUtterance(word));
-}
-
-function switchFamily(index) {
-    currentFamily = index;
-    currentIndex = 0;
-    setWord();
-}
-
-$(window).load(function(){
-    $.each(families, function( index, value ) {
-        $("#wordFamilies").append( "<a href=\"javascript:void(0);\" onclick=\"switchFamily('" + index + "');\" class=\"familyMenu\" style=\"background: " + getRandomColor() + "\">" + index + "</a> " );
-    });
-
-    $("#wordmod").click(function() {
-        currentIndex++;
-        if (currentIndex == families[currentFamily].length) {
-            currentIndex = 0;
-        }
-        setWord();    
-    });
-});
-
-</script>
-
-
-</head>
-<body>
-    <div id="stage">
-        <a href="javascript:void(0);" id="wordmod"></span>
+  <div class="weekdays">
+    <div class="sunday weekday">
+      <h2>Sunday</h2>
+      <div class="planet">
+        <p>Sun</p>
+      </div>
     </div>
-    <div id="toggle"><a href="javascript:void(0);" onclick="toggleCase();" id="caseToggle">Toggle LowerCase</a> | <a href="javascript:void(0);" onclick="toggleSound();" id="soundToggle">Sound Off</a></div>
-    <h2>Word Families: Click Below and Above to Cycle Through Variants</h2>
-    <h4>Thanks to <a href="http://www.enchantedlearning.com/rhymes/wordfamilies/">Enchanted Learning</a> for the list of Word Families.</h4>
-    <div id="wordFamilies"></div>
-</body>
+    <div class="monday weekday">
+      <h2>Monday</h2>
+      <div class="planet">
+        <p>Moon</p>
+      </div>
+    </div>
+    <div class="tuesday weekday">
+      <h2>Tuesday</h2>
+      <div class="planet">
+        <p>Mars</p>
+      </div>
+    </div>
+    <div class="wednesday weekday">
+      <h2>Wednesday</h2>
+      <div class="planet">
+        <p>Mercury</p>
+      </div>
+    </div>
+    <div class="thursday weekday">
+      <h2>Thursday</h2>
+      <div class="planet">
+        <p>Jupiter</p>
+      </div>
+    </div>
+    <div class="friday weekday">
+      <h2>Friday</h2>
+      <div class="planet">
+        <p>Venus</p>
+      </div>
+    </div>
+    <div class="saturday weekday">
+      <h2>Saturday</h2>
+      <div class="planet">
+        <p>Saturn</p>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+  <script type="text/javascript" src="slick/slick.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $('.weekdays').slick({
+        arrows: true,
+        dots: true,
+        infinite: true,
+        speed: 300,
+        slidesToShow: 1
+      });
+    });
+  </script>
+
+  </body>
 </html>
+                
