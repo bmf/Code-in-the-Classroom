@@ -1,0 +1,214 @@
+<html>
+<head>
+<style>
+    body {
+        background-color: darkslateblue;
+        color: white;
+    }
+
+    a {
+      color: hotpink;
+    }
+
+    #container { 
+        width: 800px;
+        position: absolute;
+        top:0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+
+        margin: auto;
+    }
+
+    #footer {
+        width: 90%;
+        text-align: center;
+        position: absolute;
+        bottom: 0;
+        margin: auto;
+    }
+
+    ul { 
+        padding: 0;
+        margin: 0;
+    }
+
+    li {
+      padding: 0;
+      float: left;
+      margin: 10px;
+      list-style: none;
+      outline: solid;
+      width: 150px;
+      height: 150px;
+      text-align: center;
+      line-height: 150px;
+      background-color: violet;
+    }
+
+    span { 
+      width: 100%;
+      height: 100%;
+      font-size: 3em;
+      font-weight: bold;
+      color: black;
+    }
+
+    .match {
+        background-color: yellow;
+    }
+
+    select
+    {
+        font-size:28px;
+        font-weight: bold;
+        -webkit-appearance: none;
+        width: 300px !important;
+    }
+
+</style>
+
+<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script>
+
+//http://www.mrsperkins.com/files/dolch_book.pdf
+var prePrimerWords = ["a","and","away","big","blue","can","come","down","find","for","funny","go","help","here","I","in","is","it","jump","little","look","make","me","my","not","one","play","red","run","said","see","the","three","to","two","up","we","where","yellow","you"];
+
+var primerWords = ["all","am","are","at","ate","be","black","brown","but","came","did","do","eat","four","get","good","have","he","into","like","must","new","no","now","on","our","out","please","pretty","ran","ride","saw","say","she","so","soon","that","there","they","this","too","under","want","was","well","went","what","white","who","will","with","yes"];
+
+var firstGradeWords = ["after","again","an","any","ask","as","by","could","every","fly","from","give","going","had","has","her","him","his","how","just","know","let","live","may","of","old","once","open","over","put","round","some","stop","take","thank","them","then","think","walk","were","when"]
+
+var secondGradeWords = ["always","around","because","been","before","best","both","buy","call","cold","does","don't","fast","first","five","found","gave","goes","green","its","made","many","off","or","pull","read","right","sing","sit","sleep","tell","their","these","those","upon","us","use","very","wash","which","why","wish","work","would","write","your"]
+
+var thirdGradeWords = ["about","better","bring","carry","clean","cut","done","draw","drink","eight","fall","far","full","got","grow","hold","hot","hurt","if","own","keep","kind","laugh","light","long","much","myself","never","only","seven","shall","show","six","small","start","ten","today","together","try","warm","pick"]
+
+var wordArrays = [];
+wordArrays["prePrimerWords"] = prePrimerWords;
+wordArrays["primerWords"] = primerWords;
+wordArrays["firstGradeWords"] = firstGradeWords;
+wordArrays["secondGradeWords"] = secondGradeWords;
+wordArrays["thirdGradeWords"] = thirdGradeWords;
+
+var currentWordArray = prePrimerWords;
+
+var changeWordArray = function() {
+    currentWordArray = wordArrays[$("#wordgroup").val()];
+    buildWordBlocks();
+}
+
+function speakWord(word) {
+    window.speechSynthesis.speak(new SpeechSynthesisUtterance(word));
+}
+
+var buildWordBlocks = function() {
+    var words = [];
+    // get words, place them in an array & randomize the order
+    for (var i = 0; i < 8; i++) { 
+      var word = currentWordArray[Math.floor(Math.random()*currentWordArray.length)];
+      words.push(word);
+      words.push(word);
+    }
+    randomizeWords();
+
+    // output words then hide them
+    var output = "<ol>"; 
+    for (var i = 0; i < 16; i++) { 
+      output += "<li>";
+      output += "<span>" + words[i] + "</span>";
+      output += "</li>";
+    }
+    output += "</ol>";
+
+    $("#container").html(output);
+    $("span").hide();
+
+    var guess1 = "";
+    var guess2 = "";
+    var count = 0;
+
+    $("li").click(function() {
+      if ((count < 2) &&  ($(this).children("span").hasClass("face-up")) === false) {
+        
+        // increment guess count, show image, mark it as face up
+        count++;
+        $(this).children("span").show();
+        $(this).children("span").addClass("face-up");
+        
+        //guess #1
+        if (count === 1 ) { 
+          guess1 = $(this).children("span").html(); 
+          speakWord(guess1);
+        }   
+        
+        //guess #2
+        else { 
+          guess2 = $(this).children("span").html();
+          speakWord(guess2);
+
+          // since it's the 2nd guess check for match
+          if (guess1 === guess2) { 
+            //console.log("match");
+            $("li").children("span.face-up").addClass("match");
+            $("li").children("span.face-up").parent().addClass("match");
+          } 
+          
+          // else it's a miss
+          else { 
+            //console.log("miss");
+            setTimeout(function() {
+              $("span").not(".match").hide();
+              $("span").not(".match").removeClass("face-up");
+            }, 1000);
+          }
+          
+          // reset
+          count = 0; 
+          setTimeout(function() { console.clear(); }, 60000);      
+        }
+      }
+    });
+
+    // randomize array of words
+    function randomizeWords(){
+      Array.prototype.randomize = function()
+      {
+        var i = this.length, j, temp;
+        while ( --i )
+        {
+          j = Math.floor( Math.random() * (i - 1) );
+          temp = this[i];
+          this[i] = this[j];
+          this[j] = temp;
+        }
+      };
+      
+      words.randomize();
+    }
+}
+
+$(document).ready(function() {
+    buildWordBlocks();
+    $("#wordgroup").change(function() {
+        changeWordArray();
+    });
+});
+
+</script>
+</head>
+<body>
+<div id="container"></div>
+<div id="footer">
+    <form >
+      <select id="wordgroup">
+          <option value="prePrimerWords">Pre-Primer Words</option>
+          <option value="primerWords">Primer Words</option>
+          <option value="firstGradeWords">First-Grade Words</option>
+          <option value="secondGradeWords">Second-Grade Words</option>
+          <option value="thirdGradeWords">Third-Grade Words</option>
+      </select>
+      <p>Built on <a href="http://codepen.io/jamesbarnett/pen/kiGsl">LOLCatz Memory Game</a> by jamesbarnett.</p>
+    </form>
+</div>
+</body>
+</html>
