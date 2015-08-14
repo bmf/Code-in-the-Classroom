@@ -77,6 +77,20 @@
         width: 300px !important;
     }
 
+    #toggle {
+        margin: auto;
+        text-align: center;
+        background-color: lightgreen;
+        width: 250px;
+        height: 25px;
+        line-height: 25px;
+    }
+
+    #toggle a {
+        text-decoration: none;
+        font-weight: bold;
+    }
+
 </style>
 
 <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
@@ -95,7 +109,7 @@ sentences["blue"] = ["The sky is blue."];
 sentences["can"] = ["I can read."];
 sentences["come"] = ["Will you come over?"];
 sentences["down"] = ["She went down the slide."];
-sentences["find"] = ["I can’t find my pencil."];
+sentences["find"] = ["I can't find my pencil."];
 sentences["for"] = ["This gift is for you."];
 sentences["funny"] = ["That was a funny joke."];
 sentences["go"] = ["They will go to school."];
@@ -173,9 +187,9 @@ sentences["too"] = ["I washed my hands too."];
 sentences["under"] = ["There is a monster under my bed."];
 sentences["want"] = ["I want a cookie."];
 sentences["was"] = ["He was running down the hall."];
-sentences["well"] = ["I don’t feel well."];
+sentences["well"] = ["I don't feel well."];
 sentences["went"] = ["We went to the movies."];
-sentences["what"] = ["I don’t know what to do."];
+sentences["what"] = ["I don't know what to do."];
 sentences["white"] = ["The snow is white."];
 sentences["who"] = ["Who will be my friend?"];
 sentences["will"] = ["She will play on the swings."];
@@ -186,7 +200,7 @@ sentences["yes"] = ["Yes, I like using the computer."];
 sentences["after"] = ["Read your book after school."];
 sentences["again"] = ["Did you watch the movie again?"];
 sentences["an"] = ["I saw an elephant at the zoo."];
-sentences["any"] = ["I didn’t see any whales."];
+sentences["any"] = ["I didn't see any whales."];
 sentences["ask"] = ["Did you ask the teacher?"];
 sentences["as"] = ["I am as quiet as a mouse."];
 sentences["by"] = ["Sit by your friend."];
@@ -221,7 +235,7 @@ sentences["thank"] = ["Thank you for helping me."];
 sentences["them"] = ["That ball belongs to them."];
 sentences["then"] = ["I will eat lunch and then go play."];
 sentences["think"] = ["I think it is your turn."];
-sentences["walk"] = ["Let’s go for a walk."];
+sentences["walk"] = ["Let's go for a walk."];
 sentences["were"] = ["They were having a good time."];
 sentences["when"] = ["When are we leaving?"];
 
@@ -236,7 +250,7 @@ sentences["both"] = ["We both went for a walk."];
 sentences["call"] = ["Please call me on the phone."];
 sentences["cold"] = ["It was cold last night."];
 sentences["does"] = ["She does a good job."];
-sentences["don’t"] = ["Don’t cut in line."];
+sentences["don't"] = ["Don't cut in line."];
 sentences["fast"] = ["He is fast."];
 sentences["first"] = ["First grade is great!"];
 sentences["five"] = ["A nickel is worth five cents."];
@@ -252,7 +266,7 @@ sentences["or"] = ["Do you like chocolate or vanilla?"];
 sentences["pull"] = ["The horse will pull the carriage."];
 sentences["read"] = ["Which book shall I read?"];
 sentences["right"] = ["That is the right answer."];
-sentences["sing"] = ["Let’s sing a song."];
+sentences["sing"] = ["Let's sing a song."];
 sentences["sit"] = ["Please sit down."];
 sentences["sleep"] = ["The baby will sleep in the crib."];
 sentences["tell"] = ["Did you tell your dad?"];
@@ -283,7 +297,7 @@ sentences["done"] = ["I am done with my work."];
 sentences["draw"] = ["He will draw a picture."];
 sentences["drink"] = ["Get a drink from the fountain."];
 sentences["eight"] = ["She is eight years old."];
-sentences["fall"] = ["Don’t fall off the jungle gym."];
+sentences["fall"] = ["Don't fall off the jungle gym."];
 sentences["far"] = ["How far away is it?"];
 sentences["full"] = ["The basket is full of apples."];
 sentences["got"] = ["He got sick."];
@@ -297,7 +311,7 @@ sentences["light"] = ["Turn on the light."];
 sentences["long"] = ["Her hair is long."];
 sentences["much"] = ["How much does that cost?"];
 sentences["myself"] = ["I hurt myself."];
-sentences["never"] = ["I’ve never been to Disney World."];
+sentences["never"] = ["I've never been to Disney World."];
 sentences["only"] = ["I only read two pages."];
 sentences["own"] = ["Use your own pencil."];
 sentences["pick"] = ["Pick a name from the hat."];
@@ -309,7 +323,7 @@ sentences["small"] = ["My shoes are too small."];
 sentences["start"] = ["School will start soon."];
 sentences["ten"] = ["I have ten fingers."];
 sentences["today"] = ["We have gym class today."];
-sentences["together"] = ["Let’s play together."];
+sentences["together"] = ["Let's play together."];
 sentences["try"] = ["Please try to be quiet."];
 sentences["warm"] = ["The soup is warm."];
 
@@ -337,25 +351,43 @@ var changeWordArray = function() {
     buildWordBlocks();
 }
 
+var soundOn = true;
+
+function toggleSound() {
+    if (soundOn) {
+        soundOn = false;
+        $("#soundToggle").html("Sound On");
+    } else {
+        soundOn = true;
+        $("#soundToggle").html("Sound Off");
+    }
+}
+
 function speakWord(word) {
-    window.speechSynthesis.speak(new SpeechSynthesisUtterance(word));
+    if (soundOn) window.speechSynthesis.speak(new SpeechSynthesisUtterance(word));
 }
 
 var readSentence = function(word) {
     var sentence = sentences[word].toString();
+    speakWord(sentence);
     $("#sentence").html(sentence.replace(word,'<u>'+word+'</u>'));
-    var stringArray = sentence.split(" ");
-    var arrayLength = stringArray.length;
-    for (var i = 0; i < arrayLength; i++) {
-        speakWord(stringArray[i]);
-    }
 }
 
 var buildWordBlocks = function() {
     var words = [];
     // get words, place them in an array & randomize the order
-    for (var i = 0; i < 6; i++) { 
+    for (var i = 0; i < 6; i++) {
       var word = currentWordArray[Math.floor(Math.random()*currentWordArray.length)];
+      //Prevent adding duplicate words to the array.
+      var notInArray = false;
+      while (!notInArray) {
+        if ($.inArray(word, words) != -1) {
+          word = currentWordArray[Math.floor(Math.random()*currentWordArray.length)];
+        }
+        else {
+          notInArray = true;
+        }
+      }
       words.push(word);
       words.push(word);
     }
@@ -448,6 +480,7 @@ $(document).ready(function() {
 <div id="container"></div>
 <div id="footer">
     <h1 id="sentence">Site Words Memory Game</h1>
+    <div id="toggle"><a href="javascript:void(0);" onclick="toggleSound();" id="soundToggle">Sound Off</a></div>
     <form >
       <select id="wordgroup">
           <option value="prePrimerWords">Pre-Primer Words</option>
