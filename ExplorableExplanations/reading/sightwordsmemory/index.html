@@ -65,8 +65,15 @@
         font-size: 2em;
       }
     }
+
+    .face-up {
+        background-color: crimson;
+        color: white;
+    }
+
     .match {
         background-color: yellow;
+        color: black;
     }
 
     select
@@ -90,6 +97,49 @@
         text-decoration: none;
         font-weight: bold;
     }
+
+.myButton {
+  -moz-box-shadow:inset 0px 1px 0px 0px #bee2f9;
+  -webkit-box-shadow:inset 0px 1px 0px 0px #bee2f9;
+  box-shadow:inset 0px 1px 0px 0px #bee2f9;
+  background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #63b8ee), color-stop(1, #468ccf));
+  background:-moz-linear-gradient(top, #63b8ee 5%, #468ccf 100%);
+  background:-webkit-linear-gradient(top, #63b8ee 5%, #468ccf 100%);
+  background:-o-linear-gradient(top, #63b8ee 5%, #468ccf 100%);
+  background:-ms-linear-gradient(top, #63b8ee 5%, #468ccf 100%);
+  background:linear-gradient(to bottom, #63b8ee 5%, #468ccf 100%);
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#63b8ee', endColorstr='#468ccf',GradientType=0);
+  background-color:#63b8ee;
+  -moz-border-radius:6px;
+  -webkit-border-radius:6px;
+  border-radius:6px;
+  border:1px solid #3866a3;
+  display:inline-block;
+  cursor:pointer;
+  color:#14396a;
+  font-family:Arial;
+  font-size:15px;
+  font-weight:bold;
+  padding:6px 24px;
+  text-decoration:none;
+  text-shadow:0px 1px 0px #7cacde;
+}
+.myButton:hover {
+  background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #468ccf), color-stop(1, #63b8ee));
+  background:-moz-linear-gradient(top, #468ccf 5%, #63b8ee 100%);
+  background:-webkit-linear-gradient(top, #468ccf 5%, #63b8ee 100%);
+  background:-o-linear-gradient(top, #468ccf 5%, #63b8ee 100%);
+  background:-ms-linear-gradient(top, #468ccf 5%, #63b8ee 100%);
+  background:linear-gradient(to bottom, #468ccf 5%, #63b8ee 100%);
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#468ccf', endColorstr='#63b8ee',GradientType=0);
+  background-color:#468ccf;
+}
+.myButton:active {
+  position:relative;
+  top:1px;
+}
+
+
 
 </style>
 
@@ -356,10 +406,10 @@ var soundOn = true;
 function toggleSound() {
     if (soundOn) {
         soundOn = false;
-        $("#soundToggle").html("Sound On");
+        $("#soundToggle").prop('value', "Sound On");
     } else {
         soundOn = true;
-        $("#soundToggle").html("Sound Off");
+        $("#soundToggle").prop('value', "Sound Off");
     }
 }
 
@@ -370,7 +420,7 @@ function speakWord(word) {
 var readSentence = function(word) {
     var sentence = sentences[word].toString();
     speakWord(sentence);
-    $("#sentence").html(sentence.replace(word,'<u>'+word+'</u>'));
+    $("#sentence").html(sentence.replace(' ' + word + ' ',' <u>' + word + '</u> '));
 }
 
 var buildWordBlocks = function() {
@@ -417,6 +467,7 @@ var buildWordBlocks = function() {
         count++;
         $(this).children("span").show();
         $(this).children("span").addClass("face-up");
+        $(this).addClass("face-up");
         
         //guess #1
         if (count === 1 ) { 
@@ -442,8 +493,9 @@ var buildWordBlocks = function() {
             setTimeout(function() {
               $("span").not(".match").hide();
               $("span").not(".match").removeClass("face-up");
+              $("span").not(".match").parent().removeClass("face-up");
               count = 0;
-            }, 1000);
+            }, 2000);
           }
         }
       }
@@ -480,7 +532,6 @@ $(document).ready(function() {
 <div id="container"></div>
 <div id="footer">
     <h1 id="sentence">Site Words Memory Game</h1>
-    <div id="toggle"><a href="javascript:void(0);" onclick="toggleSound();" id="soundToggle">Sound Off</a></div>
     <form >
       <select id="wordgroup">
           <option value="prePrimerWords">Pre-Primer Words</option>
@@ -488,7 +539,9 @@ $(document).ready(function() {
           <option value="firstGradeWords">First-Grade Words</option>
           <option value="secondGradeWords">Second-Grade Words</option>
           <option value="thirdGradeWords">Third-Grade Words</option>
-      </select>
+      </select><br/>
+      <input type="button" value="Reset" onclick="buildWordBlocks();" class="myButton" />
+      <input type="button" value="Sound Off" onclick="toggleSound();" class="myButton" id="soundToggle" /><br/>
       <p>Built on <a href="http://codepen.io/jamesbarnett/pen/kiGsl">LOLCatz Memory Game</a> by jamesbarnett and Dolch Site Words from <a href="http://www.mrsperkins.com/files/dolch_book.pdf">Jill Perkins' Workbook</a></p>
     </form>
 </div>
