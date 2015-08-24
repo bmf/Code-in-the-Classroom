@@ -423,6 +423,34 @@ var readSentence = function(word) {
     $("#sentence").html(sentence.replace(' ' + word + ' ',' <u>' + word + '</u> '));
 }
 
+function getRandomColor() {
+    var letters = '0123456789ABCDEF'.split('');
+    var color = '#';
+    for (var i = 0; i < 6; i++ ) {
+        color += letters[Math.floor(Math.random() * 13)];
+    }
+    return color;
+}
+
+var winAnimation = function() {
+    var animationInterval = setInterval(function(){
+        $( "li" ).each(function( index ) {
+            var randColor = getRandomColor();
+            $(this).css('background-color', randColor);
+            $(this).children("span").css('background-color', randColor);
+            $(this).children("span").css('color', 'white');
+        });
+    },100);
+    window.setTimeout(function(){
+        window.clearInterval(animationInterval);
+        $( "li" ).each(function( index ) {
+            $(this).css('background-color', "");
+            $(this).children("span").css('background-color', "");
+            $(this).children("span").css('color', "");
+        });
+    }, 5000);
+}
+
 var buildWordBlocks = function() {
     var words = [];
     // get words, place them in an array & randomize the order
@@ -486,8 +514,10 @@ var buildWordBlocks = function() {
             $("li").children("span.face-up").addClass("match");
             $("li").children("span.face-up").parent().addClass("match");
             count = 0;
-          } 
-          
+            if ($("span").length == $("span.match").length) {
+                winAnimation();
+            }
+          }
           // else it's a miss
           else { 
             setTimeout(function() {
@@ -516,6 +546,7 @@ var buildWordBlocks = function() {
       };
       
       words.randomize();
+      winAnimation();
     }
 }
 
@@ -540,7 +571,7 @@ $(document).ready(function() {
           <option value="secondGradeWords">Second-Grade Words</option>
           <option value="thirdGradeWords">Third-Grade Words</option>
       </select><br/>
-      <input type="button" value="Reset" onclick="buildWordBlocks();" class="myButton" />
+      <input type="button" value="New Game" onclick="buildWordBlocks();" class="myButton" />
       <input type="button" value="Sound Off" onclick="toggleSound();" class="myButton" id="soundToggle" /><br/>
       <p>Built on <a href="http://codepen.io/jamesbarnett/pen/kiGsl">LOLCatz Memory Game</a> by jamesbarnett and Dolch Site Words from <a href="http://www.mrsperkins.com/files/dolch_book.pdf">Jill Perkins' Workbook</a></p>
     </form>
