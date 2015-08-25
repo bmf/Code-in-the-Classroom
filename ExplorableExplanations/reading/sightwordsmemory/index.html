@@ -433,6 +433,18 @@ function getRandomColor() {
 }
 
 var winAnimation = function() {
+    var audioElement = document.createElement('audio');
+    audioElement.setAttribute('src', 'mp3/tada.mp3');
+    //audioElement.setAttribute('autoplay', 'autoplay');
+    $.get();
+    //audioElement.addEventListener("load", function() {
+    //    audioElement.play();
+    //}, true);
+
+    window.setTimeout(function(){
+        audioElement.play();
+    }, 3000);
+
     var animationInterval = setInterval(function(){
         $( "li" ).each(function( index ) {
             var randColor = getRandomColor();
@@ -448,6 +460,7 @@ var winAnimation = function() {
             $(this).children("span").css('background-color', "");
             $(this).children("span").css('color', "");
         });
+        audioElement.pause();
     }, 5000);
 }
 
