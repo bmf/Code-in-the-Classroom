@@ -181,7 +181,7 @@ function toggleCase() {
         $("#caseToggle").html("Toggle LowerCase");
         $( "#wordmod" ).html($( "#wordmod" ).html().toUpperCase());
     }
-    if (soundOn) speakWord(baseWord);
+    speakWord(baseWord);
 }
 
 function toggleSound() {
@@ -203,11 +203,13 @@ function setWord() {
     } else {
         $("#wordmod").html(modWord.replace(currentFamily,'<u>'+currentFamily+'</u>').toLowerCase());
     }
-    if (soundOn) speakWord(baseWord);
+    speakWord(baseWord);
 }
 
 function speakWord(word) {
-    window.speechSynthesis.speak(new SpeechSynthesisUtterance(word));
+    if (typeof window.speechSynthesis != "undefined" && soundOn) {
+      window.speechSynthesis.speak(new SpeechSynthesisUtterance(word));
+    }
 }
 
 function switchFamily(index) {

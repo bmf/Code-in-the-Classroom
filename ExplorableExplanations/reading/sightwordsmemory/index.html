@@ -414,7 +414,9 @@ function toggleSound() {
 }
 
 function speakWord(word) {
-    if (soundOn) window.speechSynthesis.speak(new SpeechSynthesisUtterance(word));
+    if (typeof window.speechSynthesis != "undefined" && soundOn) {
+      window.speechSynthesis.speak(new SpeechSynthesisUtterance(word));
+    }
 }
 
 var readSentence = function(word) {
