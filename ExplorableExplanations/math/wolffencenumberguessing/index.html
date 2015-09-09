@@ -168,31 +168,6 @@
 
 <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
 <script>
-jQuery(document).ready(function($){
-  // Viewport Width
-  viewportWidth(true);
-});
-
-function viewportWidth(val){
-  if(val == true){
-    var vWidthStyling = "position: fixed; top: 0; left: 0; z-index: 99999999; padding: 5px 15px; float: left; color: #efefef; font-size: 14px; background-color: #000;";
-    
-    // Initial Append and Display
-    var vWidth = window.innerWidth;
-    $('body').append('<div id="viewportwidth" style="' + vWidthStyling + '"><a href="index.html" style="color: #fff;">Width: ' + vWidth + 'px &nbsp;&nbsp;&nbsp;&nbsp;[Return Home]</a></div>');
-    
-    // Update on Resize
-    window.addEventListener('resize', function(){
-      
-      // Prevent cluttering up the DOM
-      $('#viewportwidth').remove();
-      
-      var vWidth = window.innerWidth;
-      $('body').append('<div id="viewportwidth" style="' + vWidthStyling + '"><a href="index.html" style="color: #fff;">Width: ' + vWidth + 'px &nbsp;&nbsp;&nbsp;&nbsp;[Return Home]</a></div>');
-    });
-  }
-}
-
 var soundOn = true;
 
 function toggleSound() {
