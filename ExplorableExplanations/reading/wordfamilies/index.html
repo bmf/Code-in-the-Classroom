@@ -106,8 +106,6 @@ function toggleCase() {
         uppercase = true;
         $("#caseToggle").html("Toggle LowerCase");
         $( "#wordmod" ).html($( "#wordmod" ).html().toUpperCase());
-<<<<<<< HEAD
-=======
     }
     speakWord(baseWord);
 }
@@ -119,24 +117,9 @@ function toggleSound() {
     } else {
         soundOn = true;
         $("#soundToggle").html("Sound Off");
->>>>>>> master
-    }
-    speakWord(baseWord);
-}
-
-<<<<<<< HEAD
-function toggleSound() {
-    if (soundOn) {
-        soundOn = false;
-        $("#soundToggle").html("Sound On");
-    } else {
-        soundOn = true;
-        $("#soundToggle").html("Sound Off");
     }
 }
 
-=======
->>>>>>> master
 
 function setWord() {
     baseWord = families[currentFamily][currentIndex];
