@@ -1,64 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<style>
-*{
-	margin: 0px;
-	padding: 0px;
-}
-
-body{
-	font-size: 72pt;
-	text-align: center;
-	color: lightblue;
-	padding: 10px 0px 0px 10px;
-	font-family: lucida grande;
-	background-color: darkgreen;
-}
-
-#cont1{
-	height: 500px;
-	border: 0px solid;
-	margin: 0px auto;
-}
-
-#time{
-	font-size: 30pt;
-}
-
-#originalText{
-	display: inline;
-}
-
-.staticLetter, .currentLetter{
-	position: absolute;
-}
-
-.currentLetter{
-    font-weight: bold;
-    color: #ffffff;
-    font-size: 1.25em;
-}
-
-#toggles, #footer {
-	font-size: 0.1em;
-    width: 100%;
-    text-align: center;
-    color: #ffffff;
-    font-family: verdana, sans-serif;
-}
-
-#toggles a, #footer a {
-  text-decoration: none;
-  color: #9999ff;
-}
-
-#footer {
-    position:fixed;
-    bottom:0;
-}
-
-</style>
+<link rel="stylesheet" href="css/master.css" media="screen" charset="utf-8">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <script src="js/jquery.easing.1.3.js"></script>
 <script>
@@ -137,16 +80,16 @@ var bounceChar = function() {
 }
 
 $(function(){
-	
+
 	var characterArray = $('#originalText').text().split("");
     $('body').append('<span class="currentLetter">' + characterArray[0] + '</span>');
     //bounceCharFunction = bounceChar();
     bounceChar();
 
 	$(window).keydown(function(e){
-		
-		if(String.fromCharCode(e.keyCode).toUpperCase() == characterArray[0]){		
-			
+
+		if(String.fromCharCode(e.keyCode).toUpperCase() == characterArray[0]){
+
 			alphacolor = getBrightHex();
 			document.getElementById("originalText").style.color = alphacolor;
 
@@ -161,11 +104,11 @@ $(function(){
 					$('#time').text('Time: ' + timeRunning.toFixed(3));
 				}, 10);
 			}
-				
+
 			$('body').append('<span class="staticLetter">' + characterArray[0] + '</span>');
-			
+
             $('.staticLetter').css({'left':$('#originalText').position().left + 'px', 'top':$('#originalText').position().top + 'px'}).animate({top: '+=' + 300}, 500, 'easeOutBounce').fadeOut('slow');
-			
+
             $('.currentLetter').remove();
 
             characterArray.shift();
@@ -174,7 +117,7 @@ $(function(){
 
             //$('#originalText').text().charAt(0).animate({ top: "+=100px" }, 400, "easeOutBounce");
             //$('#originalText').animate({ top: "+=100px" }, 400, "easeOutBounce");
-			
+
 			if(characterArray.length == 0) {
 				alert('You typed the alphabet in ' + timeRunning.toFixed(3) + ' seconds!!\n\nREFRESH TO PLAY AGAIN');
             } else {
